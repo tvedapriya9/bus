@@ -1,0 +1,30 @@
+Inputs: All fields listed in the Data Dictionary below.
+Validation: Verify fields (e.g., account number format, IFSC/SWIFT), check for existing accounts, ensure account status is active.
+Output: Confirmation message, account linked to customer profile.
+FR2: View/Edit Bank Account
+Actor: Customer/Bank Staff.
+Description: Users can view linked bank accounts and edit details (with appropriate permissions/verification).
+Inputs: Select account, enter updated details.
+Validation: Same as FR1; enforce security protocols for editing.
+Output: Updated account details, confirmation.
+FR3: Delete/Deactivate Bank Account
+Actor: Bank Staff (for deactivation), Customer (for linking/unlinking).
+Description: Remove/disable a bank account from a customer's profile.
+Validation: Check for pending transactions, minimum balance requirements.
+Output: Account removed/deactivated. 
+3. Data Dictionary (for Bank Details)
+Account Holder Name: Full legal name (String, Max 100 chars).
+Account Number: Unique identifier (Numeric/Alphanumeric, Length [e.g., 9-18], Validation [e.g., Luhn check]).
+Account Type: Savings (SB), Current (CA) (Enum: SB, CA).
+Bank Name: Name of the bank (String, Max 100 chars).
+Branch Name: Branch location (String, Max 100 chars).
+IFSC/SWIFT Code: Indian Financial System Code/SWIFT (Alphanumeric, Specific format, e.g., 11 chars for IFSC).
+MICR Code: Magnetic Ink Character Recognition (Numeric, 9 digits).
+Address: Branch address (String). 
+4. Non-Functional Requirements (NFR)
+Security: Encrypt sensitive data (account numbers), use multi-factor authentication for changes, comply with PCI DSS/local regulations.
+Performance: <2 sec for data retrieval, <5 sec for saving/validation.
+Usability: Intuitive forms, clear error messages. 
+5. External Interface Requirements
+Core Banking System (CBS): APIs for real-time balance checks, transaction processing.
+Notifications: SMS/Email gateway for alerts. 
